@@ -76,6 +76,10 @@ angular-animate@^1.6.1:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.3.tgz#d228a14f47a4e50bea44ed15bbc4651d44d194f5"
 
+angular-aria@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.6.3.tgz#8143d2fdf1622408cc669509673599acd85c586c"
+
 angular-material@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.3.tgz#b466d53aaa42c1555766a1ded53a28baeb7b2fe6"

@@ -1,10 +1,10 @@
-import 'angular';
-import 'angular-animate/angular-animate.js';
-import 'angular-sanitize/angular-sanitize.js';
+import angular from 'angular';
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-material';
 import 'restangular';
 
-//use ngResouse
-//use ngMaterial
+import 'angular-material/angular-material.css';
 
 import angularUIRouter from 'angular-ui-router';
 
@@ -14,9 +14,8 @@ import GenresModule from './genres/genre.module';
 
 let muzeApp = angular.module('muzeApp', [
   angularUIRouter,
-  'restangular',
   'ngAnimate',
-  'ngSanitize',
+  'ngMaterial',
   TracksModule,
   GenresModule
 ]);
