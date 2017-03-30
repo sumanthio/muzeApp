@@ -9,16 +9,19 @@ import 'restangular';
 import angularUIRouter from 'angular-ui-router';
 
 import TracksModule from './tracks/tracks.module';
+import GenresModule from './genres/genre.module';
+
 
 let muzeApp = angular.module('muzeApp', [
   angularUIRouter,
   'restangular',
   'ngAnimate',
   'ngSanitize',
-  TracksModule
+  TracksModule,
+  GenresModule
 ]);
 
 muzeApp.config(['$urlRouterProvider', '$locationProvider',($urlRouterProvider, $locationProvider) => {
   $locationProvider.hashPrefix('');
-  $urlRouterProvider.otherwise("/tracks");
+  $urlRouterProvider.otherwise("/");
 }]);
