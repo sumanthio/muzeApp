@@ -39,18 +39,18 @@ class TrackController {
 
   getTrackList() {
     let vm = this;
-    vm.trackService.getTrackList(vm.pageNumber).then((response)=>{
+    vm.trackService.getTrackList(vm.pageNumber).then((response) => {
       //get track data and populate 'tracksList'
       //and figure out the pagination as well
-    },()=>{})
+    }, () => { })
   }
 
   getCurrentTrack() {
     let vm = this;
-    vm.trackService.getTrackData(vm.trackId).then((response)=>{
+    vm.trackService.getTrackData(vm.trackId).then((response) => {
       //get track data and populate 'tracksList'
       //and figure out the pagination as well
-    },()=>{})
+    }, () => { })
   }
 
 
@@ -58,7 +58,7 @@ class TrackController {
     let vm = this;
     vm.mdDialog.show({
       controller: ["$scope", '$mdDialog', ($scope, $mdDialog) => {
-        $scope.track = {title:'', rating:'', genres:[]};
+        $scope.track = { title: '', rating: '', genres: [] };
         $scope.hide = function () {
           $mdDialog.hide();
         };

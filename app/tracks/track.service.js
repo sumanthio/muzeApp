@@ -25,7 +25,7 @@ class TrackService {
 
     updateTrack(trackData) {
         //tracks/id
-        return this.trackResource.save({trackId:trackData.id}, trackData).$promise;
+        return this.trackResource.save({ trackId: trackData.id }, trackData).$promise;
     }
 
 }
