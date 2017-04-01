@@ -1,19 +1,19 @@
-class TracksService {
+class TrackService {
 
-    constructor(Restangular) {
+    constructor($resource) {
         'ngInject';
-        this.tracks = Restangular.all('tracks');
+        this.resource = $resource;
         //Its ngResource here
         //observe the webpack's endpoint config
     }
 
-    gettracksList() {
+    getTracksList() {
         return this.tracks.getList().then(function (response) {
             return response;
         });
     }
 
-    addTracks(data) {
+    createNewTrack(data) {
         //tracks/id POST change
         //         {
         //     "id": 1,
@@ -36,7 +36,7 @@ class TracksService {
         });
     }
 
-    updateTrackData(id) {
+    updateTrack(trackData) {
         //tracks/id
         return this.tracks.getList().then(function (response) {
             return response;
@@ -45,4 +45,4 @@ class TracksService {
 
 }
 
-export default TracksService
+export default TrackService

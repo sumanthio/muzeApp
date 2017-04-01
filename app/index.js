@@ -2,7 +2,7 @@ import angular from 'angular';
 import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
-import 'restangular';
+import 'angular-resource';
 
 import 'angular-material/angular-material.css';
 
@@ -17,6 +17,7 @@ let muzeApp = angular.module('muzeApp', [
   angularUIRouter,
   'ngAnimate',
   'ngMaterial',
+  'ngResource',
   TracksModule,
   GenresModule
 ]);
