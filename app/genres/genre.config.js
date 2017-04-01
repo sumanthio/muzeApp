@@ -2,7 +2,6 @@ class GenreConfig {
     static initRoute($stateProvider) {
         'ngInject';
 
-        //Get the ROUTES from UI ROUTER PROPERLY....!!
         $stateProvider
             .state('genres', {
                 url: '/genres',

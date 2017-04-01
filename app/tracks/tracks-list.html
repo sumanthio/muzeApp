@@ -2,9 +2,20 @@
     <h1>Music Tracks</h1>
 
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-autocomplete flex
+            md-selected-item="tracks.key"
+            md-search-text="tracks.searchText"
+            md-items="track in tracks.searchTrack(tracks.searchText)"
+            md-item-text="track"
+            md-floating-label="Search Tracks" ng-model-options="{debounce: 500}">
+          <span md-highlight-text="tracks.searchText">{{track}}</span>
+        </md-autocomplete>
+    </section>
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
         <md-input-container class="md-block" flex-gt-sm>
             <label>Search Track</label>
-            <input ng-model="searchKey" ng-model-options="{debounce: 300}">
+            <input ng-model="searchKey" ng-change='tracks.searchTrack(searchKey)' ng-model-options="{debounce: 300}">
         </md-input-container>
     </section>
 

@@ -40,8 +40,7 @@ class TrackController {
   getTrackList() {
     let vm = this;
     vm.trackService.getTrackList(vm.pageNumber).then((response) => {
-      //get track data and populate 'tracksList'
-      //and figure out the pagination as well
+      vm.tracksList = response.results;
     }, () => { })
   }
 
@@ -51,6 +50,18 @@ class TrackController {
       //get track data and populate 'tracksList'
       //and figure out the pagination as well
     }, () => { })
+  }
+
+  searchTrack(key) {
+    let vm = this;
+    if (key.length == 0) {
+      vm.getTrackList()
+    }
+    else {
+      return vm.trackService.searchTrackData(key).then(function(response){
+        return response.results;
+      })
+    }
   }
 
 
