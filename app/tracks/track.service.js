@@ -2,18 +2,23 @@ class TrackService {
 
     constructor($resource) {
         'ngInject';
-        this.resource = $resource;
-        //Its ngResource here
+        this.trackListResource = $resource('/v1/tracks');
+        this.trackResource = $resource('/v1/tracks/:trackId');
         //observe the webpack's endpoint config
     }
 
-    getTracksList() {
-        return this.tracks.getList().then(function (response) {
-            return response;
-        });
+    getTrackList(pageNum) {
+        //Not needed for the first get
+        let paginatedParam = pageNum == 1 ? {} : { page: pageNum };
+        return this.trackListResource.get(paginatedParam).$promise;
     }
 
-    createNewTrack(data) {
+    getTrackData(id) {
+        //tracks/id
+        return this.trackResource.get({trackId:id}).$promise;
+    }
+
+     createNewTrack(data) {
         //tracks/id POST change
         //         {
         //     "id": 1,
@@ -29,12 +34,6 @@ class TrackService {
         });
     }
 
-    getTracksData(id) {
-        //tracks/id
-        return this.tracks.getList().then(function (response) {
-            return response;
-        });
-    }
 
     updateTrack(trackData) {
         //tracks/id

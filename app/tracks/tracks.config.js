@@ -11,7 +11,7 @@ class BooksConfig {
                 controller: 'TrackController as tracks'
             })
             .state('single', {
-                url: '/tracks/:page/:songId',
+                url: '/tracks/:page/:trackId',
                 templateUrl: 'app/tracks/track.html',
                 controller: 'TrackController as track'
             })

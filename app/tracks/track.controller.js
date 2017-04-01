@@ -3,6 +3,7 @@ class TrackController {
     'ngInject';
     this.state = $state;
     this.pageNumber = $stateParams.page;
+    this.trackId = $stateParams.trackId;
     this.mdDialog = $mdDialog;
     this.trackService = TrackService;
     this.tracksList = [
@@ -37,7 +38,58 @@ class TrackController {
   };
 
   getTrackList() {
-    //get track data and populate 'tracksList'
+    let vm = this;
+    vm.trackService.getTrackList(vm.pageNumber).then((response)=>{
+      //get track data and populate 'tracksList'
+      //and figure out the pagination as well
+    },()=>{})
+  }
+
+  getCurrentTrack() {
+    let vm = this;
+    vm.trackService.getTrackData(vm.trackId).then((response)=>{
+      //get track data and populate 'tracksList'
+      //and figure out the pagination as well
+    },()=>{})
+  }
+
+
+  addNewTrack(ev) {
+    let vm = this;
+    vm.mdDialog.show({
+      controller: ["$scope", '$mdDialog', ($scope, $mdDialog) => {
+        $scope.track = {title:'', rating:'', genres:[]};
+        $scope.hide = function () {
+          $mdDialog.hide();
+        };
+
+        $scope.cancel = function () {
+          $mdDialog.cancel();
+        };
+
+        $scope.createTrack = function (track) {
+          $mdDialog.hide(track);
+        };
+      }],
+      templateUrl: require('./add-track-dialog.html'),
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      openFrom: {
+        top: -50
+      },
+      closeTo: {
+        left: 1500
+      }
+    })
+      .then((newTrack) => {
+        this.trackService.createNewTrack(newTrack).then(() => {
+          //toast something here
+          //and reload the view
+        }, () => { });
+      }, function () {
+        //toast something here
+      });
   }
 
   editTrack(track, ev) {
@@ -77,7 +129,7 @@ class TrackController {
         this.trackService.updateTrack(updateTrackData).then(() => {
           //toast something here
           //and reload the view
-         }, () => { });
+        }, () => { });
       }, function () {
         //toast something here
       });

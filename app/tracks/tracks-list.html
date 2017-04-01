@@ -1,4 +1,4 @@
-<md-content>
+<md-content ng-init="tracks.getTrackList()">
     <h1>Music Tracks</h1>
 
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
@@ -12,20 +12,12 @@
         <md-content>
             <md-list flex>
                 <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
-                <md-list-item class="md-3-line" ng-click="" ng-repeat="track in tracks.tracksList" ui-sref="single({page: tracks.pageNumber,songId:track.id})">
+                <md-list-item class="md-3-line" ng-click="" ng-repeat="track in tracks.tracksList" ui-sref="single({page: tracks.pageNumber,trackId:track.id})">
                     <img ng-src="http://placehold.it/100x188" class="md-avatar" />
                     <div class="md-list-item-text" layout="column">
                         <h3>{{track.title}}</h3>
                         <h4 ng-bind="track.genres"></h4>
                         <p>{{track.rating}}</p>
-                    </div>
-                </md-list-item>
-                <md-list-item class="md-3-line" ng-click="">
-                    <img ng-src="http://placehold.it/100x188" class="md-avatar" ui-sref="single({page: tracks.pageNumber,songId:13})"/>
-                    <div class="md-list-item-text" layout="column">
-                        <h3>Title</h3>
-                        <h4>desc</h4>
-                        <p>rating</p>
                     </div>
                 </md-list-item>
             </md-list>
@@ -42,7 +34,7 @@
                 </md-fab-trigger>
 
                 <md-fab-actions>
-                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini" ng-click="tracks.addNewTrack($event)">
                         B
                     </md-button>
                     <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
