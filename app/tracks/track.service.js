@@ -15,31 +15,17 @@ class TrackService {
 
     getTrackData(id) {
         //tracks/id
-        return this.trackResource.get({trackId:id}).$promise;
+        return this.trackResource.get({ trackId: id }).$promise;
     }
 
-     createNewTrack(data) {
-        //tracks/id POST change
-        //         {
-        //     "id": 1,
-        //     "title": "animals",
-        //     "rating": 4.5,
-        //     "genres": [
-        //         1
-        //     ]
-        // }
-
-        return this.tracks.getList().then(function (response) {
-            return response;
-        });
+    createNewTrack(trackData) {
+        return this.trackListResource.save({}, trackData).$promise;
     }
 
 
     updateTrack(trackData) {
         //tracks/id
-        return this.tracks.getList().then(function (response) {
-            return response;
-        });
+        return this.trackResource.save({trackId:trackData.id}, trackData).$promise;
     }
 
 }

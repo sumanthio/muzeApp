@@ -71,7 +71,7 @@ class TrackController {
           $mdDialog.hide(track);
         };
       }],
-      templateUrl: require('./add-track-dialog.html'),
+      templateUrl: 'app/tracks/add-track-dialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
@@ -109,7 +109,7 @@ class TrackController {
           $mdDialog.hide(track);
         };
       }],
-      templateUrl: require('./edit-track-dialog.html'),
+      templateUrl: 'app/tracks/edit-track-dialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
@@ -126,7 +126,7 @@ class TrackController {
       }
     })
       .then((updatedTrackData) => {
-        this.trackService.updateTrack(updateTrackData).then(() => {
+        this.trackService.updateTrack(updatedTrackData).then(() => {
           //toast something here
           //and reload the view
         }, () => { });
