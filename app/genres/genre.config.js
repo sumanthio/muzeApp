@@ -4,12 +4,12 @@ class GenreConfig {
 
         $stateProvider
             .state('genres', {
-                url: '/genres',
+                url: '/genres/:page',
                 templateUrl: 'app/genres/genre-list.html',
                 controller: 'GenreController as genres'
             })
-            .state('genre', {
-                url: '/genres/:id',
+            .state('singleGenre', {
+                url: '/genres/:page/:genreId',
                 templateUrl: 'app/genres/genre.html',
                 controller: 'GenreController as genre'
             })

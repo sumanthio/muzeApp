@@ -1,12 +1,42 @@
-<ul>
-    <li>List</li>
-    <li>of</li>
-    <li>Genres</li>
-</ul>
+<md-content ng-init="genres.getGenreList()">
+    <h1>Genres</h1>
 
-<p>Edit a genre as well</p>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-content>
+            <md-list flex>
+                <md-list-item class="md-3-line" ng-click="" ng-repeat="genre in genres.genreList" ui-sref="singleGenre({page: genres.pageNumber, genreId:genre.id})">
+                    <img ng-src="http://placehold.it/100x188" class="md-avatar" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{genre.name}}</h3>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </section>
 
-<ol>
-    <li>Add a genre</li>
-    <li></li>
-</ol>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <div class="lock-size" layout="row" layout-align="center center">
+            <md-fab-speed-dial md-open="false" md-direction="left" class="md-scale">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-primary">
+                        Fix this position
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini" ng-click="genres.addNewGenre($event)">
+                        B
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+
+    </section>
+
+
+    <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+        <md-button class="md-raised">Page 1</md-button>
+        <md-button class="md-raised">Page 2</md-button>
+        <md-button class="md-raised">Page 3</md-button>
+    </section>
+</md-content>

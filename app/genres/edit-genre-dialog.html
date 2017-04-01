@@ -1,0 +1,40 @@
+<md-dialog aria-label="Edit Genre" flex="70">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Edit the genre</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="fa fa-times" aria-label="Close dialog"></i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-content layout="column" layout-padding>
+                <div>
+                    <md-input-container>
+                        <label>ID</label>
+                        <input ng-model="genre.id" ng-disabled="true">
+                    </md-input-container>
+
+
+                    <md-input-container>
+                        <label>Name</label>
+                        <input ng-model="genre.name">
+                    </md-input-container>
+                </div>
+            </md-content>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+        <md-button ng-click="update(genre)">
+            Update genre
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

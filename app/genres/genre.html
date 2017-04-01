@@ -1,3 +1,21 @@
-<ul>
-    <li>Single genre</li>
-</ul>
+<md-content class="md-padding" layout-xs="column" layout="row" ng-init="genre.getCurrentGenre()">
+    <div flex-xs flex-gt-xs="75" layout="column">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{genre.detailedInfo.name}}</span>
+                    <span class="md-subhead">
+                    </span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img ng-src="http://placehold.it/250x300" class="md-avatar" />
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="genre.editGenre(genre.detailedInfo, $event)">Edit</md-button>  
+                <md-button>Play</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+
+</md-content>

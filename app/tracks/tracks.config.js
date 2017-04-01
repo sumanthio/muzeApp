@@ -10,7 +10,7 @@ class BooksConfig {
                 templateUrl: 'app/tracks/tracks-list.html',
                 controller: 'TrackController as tracks'
             })
-            .state('single', {
+            .state('singleTrack', {
                 url: '/tracks/:page/:trackId',
                 templateUrl: 'app/tracks/track.html',
                 controller: 'TrackController as track'
