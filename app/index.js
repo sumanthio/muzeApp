@@ -11,6 +11,7 @@ import angularUIRouter from 'angular-ui-router';
 import TracksModule from './tracks/tracks.module';
 import GenresModule from './genres/genre.module';
 
+import './styles/style.css';
 
 let muzeApp = angular.module('muzeApp', [
   angularUIRouter,

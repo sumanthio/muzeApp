@@ -1,1 +1,26 @@
-<h1>Turn down for what</h1>
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="75" layout="column">
+        <md-card md-theme="dark-grey" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{track.detailedInfo.title}}</span>
+                    <span class="md-subhead">
+                         <md-chips ng-model="track.detailedInfo.genres" name="fruitName" readonly="true">
+                            <md-chip-template>
+                                <strong>{{$chip.name}}</strong>
+                            </md-chip-template>
+                        </md-chips>
+                    </span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <img ng-src="http://placehold.it/250x300" class="md-avatar" />
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="editTrack(track.detailedInfo)">Edit</md-button>
+                <md-button>Play</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+
+</md-content>

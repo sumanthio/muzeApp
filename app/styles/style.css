@@ -1,0 +1,27 @@
+.md-headline {
+    text-transform: capitalize;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.slide.ng-enter,
+.slide.ng-leave {
+  transition: all 1s ease;
+}
+.slide.ng-enter {
+  transform: translate(100%, 0);
+}
+.slide.ng-enter-active {
+  transform: translate(0, 0);
+}
+.slide.ng-leave {
+  transform: translate(0, 0);
+}
+.slide.ng-leave-active {
+  transform: translate(-100%, 0);
+}

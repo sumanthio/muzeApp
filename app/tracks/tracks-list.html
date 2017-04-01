@@ -1,1 +1,66 @@
-Tracks list view
+<md-content>
+    <h1>Music Tracks</h1>
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Search Track</label>
+            <input ng-model="searchKey" ng-model-options="{debounce: 300}">
+        </md-input-container>
+    </section>
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-content>
+            <md-list flex>
+                <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
+                <md-list-item class="md-3-line" ng-click="" ng-repeat="track in tracks.tracksList" ui-sref="single({page: tracks.pageNumber,songId:track.id})">
+                    <img ng-src="http://placehold.it/100x188" class="md-avatar" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{track.title}}</h3>
+                        <h4 ng-bind="track.genres"></h4>
+                        <p>{{track.rating}}</p>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-3-line" ng-click="">
+                    <img ng-src="http://placehold.it/100x188" class="md-avatar" ui-sref="single({page: tracks.pageNumber,songId:13})"/>
+                    <div class="md-list-item-text" layout="column">
+                        <h3>Title</h3>
+                        <h4>desc</h4>
+                        <p>rating</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </section>
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <div class="lock-size" layout="row" layout-align="center center">
+            <md-fab-speed-dial md-open="false" md-direction="left" class="md-scale">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-primary">
+                        Fix this position
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                        B
+                    </md-button>
+                    <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                        B
+                    </md-button>
+                    <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                        C
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+
+    </section>
+
+
+    <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+        <md-button class="md-raised">Page 1</md-button>
+        <md-button class="md-raised">Page 2</md-button>
+        <md-button class="md-raised">Page 3</md-button>
+    </section>
+</md-content>

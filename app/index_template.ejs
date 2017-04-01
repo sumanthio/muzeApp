@@ -19,13 +19,13 @@
                 md-component-id="left" ng-click="app.toggleList()">
       <!-- Nav links heret 
       <ul>
-<li><a href="/#/tracks">Tracks</a></li>
+<li><a href="/#/tracks/1">Tracks</a></li>
 <li><a href="/#/genres">Genres</a></li>
 </ul>
 -->
   <md-list>
     <md-list-item>
-      <p>Tracks</p>
+      <p><a href="/#/tracks/1">Tracks</a></p>
     </md-list-item>
     <md-list-item>
       <p>Genres</p>
@@ -36,7 +36,7 @@
 
     <!-- Container #4 -->
     <md-content flex id="content">
-      <div ui-view></div>
+      <div class="slide" ui-view></div>
     </md-content>
 
   </div>

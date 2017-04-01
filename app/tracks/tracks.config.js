@@ -5,12 +5,13 @@ class BooksConfig {
         //Get the ROUTES from UI ROUTER PROPERLY....!!
         $stateProvider
             .state('tracks', {
-                url: '/tracks',
+                url: '/tracks/:page',
+                //default
                 templateUrl: 'app/tracks/tracks-list.html',
                 controller: 'TrackController as tracks'
             })
             .state('single', {
-                url: '/tracks/:id',
+                url: '/tracks/:page/:songId',
                 templateUrl: 'app/tracks/track.html',
                 controller: 'TrackController as track'
             })
