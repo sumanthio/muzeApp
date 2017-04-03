@@ -1,69 +1,50 @@
-<md-content ng-init="tracks.getTrackList()">
-    <h1>Music Tracks</h1>
+<div layout='row' layout-align="center center">
+    <md-content class="md-whiteframe-24dp" flex='85' flex-xs='100' ng-init="tracks.getTrackList()">
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-autocomplete flex
-            md-selected-item="tracks.key"
-            md-search-text="tracks.searchText"
-            md-items="track in tracks.searchTrack(tracks.searchText)"
-            md-item-text="track"
-            md-floating-label="Search Tracks" ng-model-options="{debounce: 500}">
-          <span md-highlight-text="tracks.searchText">{{track}}</span>
+        <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-autocomplete flex md-selected-item="tracks.key" md-search-text="tracks.searchText" md-items="track in tracks.searchTrack(tracks.searchText)"
+            md-item-text="track" md-floating-label="Search Tracks" ng-model-options="{debounce: 500}">
+            <span md-highlight-text="tracks.searchText">{{track}}</span>
         </md-autocomplete>
-    </section>
+    </section>-->
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>Search Track</label>
-            <input ng-model="searchKey" ng-change='tracks.searchTrack(searchKey)' ng-model-options="{debounce: 300}">
-        </md-input-container>
-    </section>
+        <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+            <md-input-container class="md-block" flex='55'>
+                <label>Search Track</label>
+                <input ng-model="searchKey" ng-change='tracks.searchTrack(searchKey)' ng-model-options="{debounce: 300}">
+            </md-input-container>
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-content>
-            <md-list flex>
-                <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
-                <md-list-item class="md-3-line" ng-click="" ng-repeat="track in tracks.tracksList" ui-sref="singleTrack({page: tracks.pageNumber,trackId:track.id})">
-                    <img ng-src="http://placehold.it/100x188" class="md-avatar" />
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{track.title}}</h3>
-                        <h4 ng-bind="track.genres"></h4>
-                        <p>{{track.rating}}</p>
-                    </div>
-                </md-list-item>
-            </md-list>
-        </md-content>
-    </section>
+            <div class="lock-size" layout="row" layout-align="center center">
+                <md-button aria-label="menu" class="md-fab" ng-click="tracks.addNewTrack($event)">
+                    <i class="fa fa-plus"></i>
+                </md-button>
+            </div>
+        </section>
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <div class="lock-size" layout="row" layout-align="center center">
-            <md-fab-speed-dial md-open="false" md-direction="left" class="md-scale">
-                <md-fab-trigger>
-                    <md-button aria-label="menu" class="md-fab md-primary">
-                        Fix this position
-                    </md-button>
-                </md-fab-trigger>
-
-                <md-fab-actions>
-                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini" ng-click="tracks.addNewTrack($event)">
-                        B
-                    </md-button>
-                    <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
-                        B
-                    </md-button>
-                    <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
-                        C
-                    </md-button>
-                </md-fab-actions>
-            </md-fab-speed-dial>
-        </div>
-
-    </section>
+        <section layout="column" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-content flex='75'>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Tracks list</md-subheader>
+                    <md-list-item class="md-3-line" ng-repeat="track in tracks.tracksList" ui-sref="track-info({page: tracks.pageNumber,trackId:track.id})">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle-o fa-stack-2x"></i>
+                            <i class="fa fa-music fa-stack-1x"></i>
+                        </span>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{track.title}}</h3>
+                            <h4 ng-bind="track.genres"></h4>
+                            <p>{{track.rating}}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </section>
 
 
-    <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
-        <md-button class="md-raised">Page 1</md-button>
-        <md-button class="md-raised">Page 2</md-button>
-        <md-button class="md-raised">Page 3</md-button>
-    </section>
-</md-content>
+        <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+            <md-button class="md-raised">Page 1</md-button>
+            <md-button class="md-raised">Page 2</md-button>
+            <md-button class="md-raised">Page 3</md-button>
+        </section>
+    </md-content>
+</div>

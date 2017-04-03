@@ -8,14 +8,12 @@ class GenreConfig {
                 templateUrl: 'app/genres/genre-list.html',
                 controller: 'GenreController as genres'
             })
-            .state('singleGenre', {
+            .state('genre-info', {
                 url: '/genres/:page/:genreId',
                 templateUrl: 'app/genres/genre.html',
                 controller: 'GenreController as genre'
             })
-
     }
-
 }
 
 export default GenreConfig.initRoute;

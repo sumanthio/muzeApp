@@ -6,12 +6,13 @@ class BooksConfig {
         $stateProvider
             .state('tracks', {
                 url: '/tracks/:page',
-                //default
+                name: 'Tracks List',
                 templateUrl: 'app/tracks/tracks-list.html',
                 controller: 'TrackController as tracks'
             })
-            .state('singleTrack', {
+            .state('track-info', {
                 url: '/tracks/:page/:trackId',
+                name: 'Track Detail',
                 templateUrl: 'app/tracks/track.html',
                 controller: 'TrackController as track'
             })

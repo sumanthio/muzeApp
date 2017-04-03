@@ -11,6 +11,8 @@ import angularUIRouter from 'angular-ui-router';
 import TracksModule from './tracks/tracks.module';
 import GenresModule from './genres/genre.module';
 
+import SideBarCtrl from './components/sidebar.controller';
+
 import 'pace-progress/themes/white/pace-theme-minimal.css';
 require('imports-loader?define=>false!pace-progress');
 import 'font-awesome/css/font-awesome.css';
@@ -29,3 +31,5 @@ muzeApp.config(['$urlRouterProvider', '$locationProvider',($urlRouterProvider, $
   $locationProvider.hashPrefix('');
   $urlRouterProvider.otherwise("/");
 }]);
+
+muzeApp.controller('SideBarCtrl', SideBarCtrl);
