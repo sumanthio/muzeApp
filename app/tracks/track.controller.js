@@ -70,6 +70,12 @@ class TrackController {
     vm.mdDialog.show({
       controller: ["$scope", '$mdDialog', ($scope, $mdDialog) => {
         $scope.track = { title: '', rating: '', genres: [] };
+        
+        $scope.newGenre = function (genre) {
+          return {
+            name: genre
+          };
+        };
         $scope.hide = function () {
           $mdDialog.hide();
         };
@@ -96,7 +102,7 @@ class TrackController {
       .then((newTrack) => {
         this.trackService.createNewTrack(newTrack).then(() => {
           //toast something here
-          //and reload the view
+          vm.state.reload();
         }, () => { });
       }, function () {
         //toast something here
@@ -114,6 +120,7 @@ class TrackController {
             name: genre
           };
         };
+
         $scope.hide = function () {
           $mdDialog.hide();
         };
@@ -145,7 +152,7 @@ class TrackController {
       .then((updatedTrackData) => {
         this.trackService.updateTrack(updatedTrackData).then(() => {
           //toast something here
-          //and reload the view
+          vm.state.reload();
         }, () => { });
       }, function () {
         //toast something here

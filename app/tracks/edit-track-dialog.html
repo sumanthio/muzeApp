@@ -1,54 +1,53 @@
 <md-dialog aria-label="Mango (Fruit)" flex="70">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>Edit the track</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <i class="fa fa-times" aria-label="Close dialog"></i>
-        </md-button>
-      </div>
-    </md-toolbar>
-
-    <md-dialog-content>
-      <div class="md-dialog-content">
-        <md-content layout="column" layout-padding>
-            <div>
-            <md-input-container>
-                <label>ID</label>
-                <input ng-model="track.id" ng-disabled="">
-            </md-input-container>
-
-
-            <md-input-container>
-                <label>Title</label>
-                <input ng-model="track.title">
-            </md-input-container>
-
-          
-                <label>Ganres</label>
-                 <md-chips ng-model="track.genres"
-                md-removable="true" md-transform-chip="newGenre($chip)" placeholder="Enter a genre">
-        <md-chip-template>
-          <strong>{{$chip.name}}</strong>
-        </md-chip-template>
-      </md-chips>
-
-
-            <md-input-container>
-                <label>Rating</label>
-                <input ng-model="track.rating">
-            </md-input-container>
-            </div>
-        </md-content>
-      </div>
-    </md-dialog-content>
-
-    <md-dialog-actions layout="row" layout-align="end center" layout-xs-align="center center">
-      <md-button class="md-raised  md-primary" ng-click="cancel()">
-       <i class="fa fa-close"></i> Cancel
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Edit the track</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <i class="fa fa-times" aria-label="Close dialog"></i>
       </md-button>
-      <md-button class="md-raised  md-primary" ng-click="update(track)">
-        <i class="fa fa-check"></i> Update track
-      </md-button>
-    </md-dialog-actions>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <md-content layout="column" layout-padding>
+        <div>
+          <md-input-container>
+            <label>ID</label>
+            <input ng-model="track.id" ng-disabled="">
+          </md-input-container>
+
+
+          <md-input-container>
+            <label>Title</label>
+            <input ng-model="track.title">
+          </md-input-container>
+
+          <md-input-container>
+            <label>Genres</label>
+            <md-chips ng-model="track.genres" md-removable="true" md-transform-chip="newGenre($chip)" placeholder="Enter a genre">
+              <md-chip-template>
+                <strong>{{$chip.name}}</strong>
+              </md-chip-template>
+            </md-chips>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Rating</label>
+            <input ng-model="track.rating">
+          </md-input-container>
+        </div>
+      </md-content>
+    </div>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row" layout-align="end center" layout-xs-align="center center">
+    <md-button class="md-raised  md-primary" ng-click="cancel()">
+      <i class="fa fa-close"></i> Cancel
+    </md-button>
+    <md-button class="md-raised  md-primary" ng-click="update(track)">
+      <i class="fa fa-check"></i> Update track
+    </md-button>
+  </md-dialog-actions>
 </md-dialog>
