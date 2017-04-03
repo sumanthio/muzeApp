@@ -13,7 +13,7 @@ import GenresModule from './genres/genre.module';
 
 import 'pace-progress/themes/white/pace-theme-minimal.css';
 require('imports-loader?define=>false!pace-progress');
-
+import 'font-awesome/css/font-awesome.css';
 import './styles/style.css';
 
 let muzeApp = angular.module('muzeApp', [
