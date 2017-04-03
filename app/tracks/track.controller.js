@@ -108,6 +108,12 @@ class TrackController {
     vm.mdDialog.show({
       controller: ["$scope", "track", '$mdDialog', ($scope, track, $mdDialog) => {
         $scope.track = track;
+
+        $scope.newGenre = function (genre) {
+          return {
+            name: genre
+          };
+        };
         $scope.hide = function () {
           $mdDialog.hide();
         };

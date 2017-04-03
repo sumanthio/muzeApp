@@ -24,6 +24,16 @@
                 <input ng-model="track.title">
             </md-input-container>
 
+          
+                <label>Ganres</label>
+                 <md-chips ng-model="track.genres"
+                md-removable="true" md-transform-chip="newGenre($chip)" placeholder="Enter a genre">
+        <md-chip-template>
+          <strong>{{$chip.name}}</strong>
+        </md-chip-template>
+      </md-chips>
+
+
             <md-input-container>
                 <label>Rating</label>
                 <input ng-model="track.rating">
@@ -33,16 +43,12 @@
       </div>
     </md-dialog-content>
 
-    <md-dialog-actions layout="row">
-      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
-        More on Wikipedia
+    <md-dialog-actions layout="row" layout-align="end center" layout-xs-align="center center">
+      <md-button class="md-raised  md-primary" ng-click="cancel()">
+       <i class="fa fa-close"></i> Cancel
       </md-button>
-      <span flex></span>
-      <md-button ng-click="cancel()">
-       Cancel
-      </md-button>
-      <md-button ng-click="update(track)">
-        Update track
+      <md-button class="md-raised  md-primary" ng-click="update(track)">
+        <i class="fa fa-check"></i> Update track
       </md-button>
     </md-dialog-actions>
 </md-dialog>
