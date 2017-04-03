@@ -1,3 +1,7 @@
+.pace .pace-progress {
+  height: 5px !important;
+}
+
 .md-headline {
     text-transform: capitalize;
 }

@@ -10,7 +10,7 @@ export default class SideBarCtrl {
         vm.mdSideNav(navId)
             .toggle()
             .then(() => {
-                console.log("Toggle");
+                //console.log("Toggle");
             })
     }
 
@@ -19,7 +19,7 @@ export default class SideBarCtrl {
         vm.mdSideNav(navId)
             .close()
             .then(() => {
-                console.log("Toggle");
+                //console.log("Toggle");
             })
     }
 }

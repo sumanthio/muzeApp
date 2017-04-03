@@ -27,9 +27,10 @@ let muzeApp = angular.module('muzeApp', [
   GenresModule
 ]);
 
-muzeApp.config(['$urlRouterProvider', '$locationProvider',($urlRouterProvider, $locationProvider) => {
+muzeApp.config(['$urlRouterProvider', '$locationProvider', '$mdIconProvider', ($urlRouterProvider, $locationProvider, $mdIconProvider) => {
   $locationProvider.hashPrefix('');
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/tracks/1");
+  $mdIconProvider.fontSet('fa', 'font-awesome');
 }]);
 
 muzeApp.controller('SideBarCtrl', SideBarCtrl);
