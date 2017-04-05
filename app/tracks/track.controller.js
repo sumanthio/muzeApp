@@ -50,8 +50,7 @@ class TrackController {
   getCurrentTrack() {
     let vm = this;
     vm.trackService.getTrackData(vm.trackId).then((response) => {
-      //get track data and populate 'tracksList'
-      //and figure out the pagination as well
+      vm.detailedInfo = response;
     }, () => { })
   }
 
@@ -103,6 +102,8 @@ class TrackController {
       }
     })
       .then((newTrack) => {
+        //passing random as we can't have all the genres at a single go
+        newTrack.genres = [Math.floor(Math.random() * 800), Math.floor(Math.random() * 500)];
         this.trackService.createNewTrack(newTrack).then(() => {
           //toast something here
           vm.state.reload();
@@ -117,6 +118,7 @@ class TrackController {
     vm.mdDialog.show({
       controller: ["$scope", "track", '$mdDialog', ($scope, track, $mdDialog) => {
         $scope.track = track;
+  
 
         $scope.newGenre = function (genre) {
           return {
@@ -153,6 +155,7 @@ class TrackController {
       }
     })
       .then((updatedTrackData) => {
+        updatedTrackData.genres = [Math.floor(Math.random() * 800), Math.floor(Math.random() * 500)];
         this.trackService.updateTrack(updatedTrackData).then(() => {
           //toast something here
           vm.state.reload();

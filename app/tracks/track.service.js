@@ -2,8 +2,8 @@ class TrackService {
 
     constructor($resource) {
         'ngInject';
-        this.trackListResource = $resource('/v1/tracks');
-        this.trackResource = $resource('/v1/tracks/:trackId');
+        this.trackListResource = $resource('http://104.197.128.152:8000/v1/tracks');
+        this.trackResource = $resource('http://104.197.128.152:8000/v1/tracks/:trackId');
         //observe the webpack's endpoint config
     }
 

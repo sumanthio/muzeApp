@@ -26,11 +26,7 @@
 
           <md-input-container>
             <label>Genres</label>
-            <md-chips ng-model="track.genres" md-removable="true" md-transform-chip="newGenre($chip)" placeholder="Enter a genre">
-              <md-chip-template>
-                <strong>{{$chip.name}}</strong>
-              </md-chip-template>
-            </md-chips>
+            {{track.genres}}
           </md-input-container>
 
           <md-input-container>
