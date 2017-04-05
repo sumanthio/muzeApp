@@ -2,6 +2,9 @@
   height: 5px !important;
 }
 
+.md-chips {
+    box-shadow: none !important;
+}
 .md-headline {
     text-transform: capitalize;
 }

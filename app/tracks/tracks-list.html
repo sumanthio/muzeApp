@@ -23,17 +23,10 @@
 
         <section layout="column" layout-sm="column" layout-align="center center" layout-wrap>
             <md-content flex="55" flex-xs='75' ng-show="tracks.tracksList.length> 0">
-                <tracks-list data-tracks='tracks.tracksList'> </tracks-list>
                 <md-list>
                     <md-subheader class="md-no-sticky">Tracks list</md-subheader>
-                    <md-list-item class="md-3-line" ng-repeat="track in tracks.tracksList" ui-sref="track-info({page: tracks.pageNumber,trackId:track.id})">
-                        <i class="fa fa-headphones fa-2x"  layout-padding aria-hidden="true"></i>
-                        <div class="md-list-item-text" layout="column">
-                            <h3>{{track.title}}</h3>
-                            <h4 ng-bind="track.genres"></h4>
-                            <p>{{track.rating}}</p>
-                        </div>
-                    </md-list-item>
+                    <track ng-repeat="track in tracks.tracksList" track-info="track" page-number="tracks.pageNumber">
+                    </track>
                 </md-list>
             </md-content> 
             <md-content flex="55" flex-xs='75' ng-show="tracks.tracksList.length == 0">
