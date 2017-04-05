@@ -1,25 +1,10 @@
-const Path = require('path');
-const Hapi = require('hapi');
-const Inert = require('inert');
+var express = require('express');
+var app = express();
 
-const server = new Hapi.Server({
-    connections: {
-        routes: {
-            files: {
-                relativeTo: Path.join(__dirname, 'dist')
-            }
-        }
-    }
-});
-server.connection({ port: 3000 });
+app.set('port', (process.env.PORT || 5000));
 
-server.register(Inert, () => {});
+app.use(express.static(__dirname + '/dist'));
 
-server.start((err) => {
-
-    if (err) {
-        throw err;
-    }
-
-    console.log('Server running at:', server.info.uri);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
