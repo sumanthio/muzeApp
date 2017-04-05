@@ -41,6 +41,9 @@ class TrackController {
     let vm = this;
     vm.trackService.getTrackList(vm.pageNumber).then((response) => {
       vm.tracksList = response.results;
+      //this has to be be empty while going towards the last page
+      let maxPageNumb = Math.ceil(response.count / 20);
+      vm.paginationArray = vm.pageNumber == maxPageNumb ? [] : Array.from({ length: maxPageNumb }, (v, k) => k + 1);
     }, () => { })
   }
 

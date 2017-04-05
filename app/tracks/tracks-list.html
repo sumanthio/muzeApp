@@ -39,9 +39,9 @@
 
 
         <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
-            <md-button class="md-raised">Page 1</md-button>
-            <md-button class="md-raised">Page 2</md-button>
-            <md-button class="md-raised">Page 3</md-button>
+            <md-button ng-show="tracks.paginationArray.length>=1" class="md-raised" ng-repeat="page in tracks.paginationArray | limitTo: 5 : tracks.pageNumber  track by $index"
+                ui-sref="tracks({page: page})">{{page}}</md-button>
+            <md-button ng-hide="tracks.paginationArray.length>=1" class="md-raised" ui-sref="tracks({page: 1})">Back to first Page</md-button>
         </section>
     </md-content>
 </div>

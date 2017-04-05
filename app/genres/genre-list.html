@@ -1,42 +1,32 @@
-<md-content ng-init="genres.getGenreList()">
-    <h1>Genres</h1>
+<div layout='row' layout-align="center center">
+    <md-content class="md-whiteframe-24dp" flex='85' flex-xs='100' ng-init="genres.getGenreList()">
+        <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+            <h1>Genres</h1>
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-content>
-            <md-list flex>
-                <md-list-item class="md-3-line" ng-click="" ng-repeat="genre in genres.genreList" ui-sref="genre-info({page: genres.pageNumber, genreId:genre.id})">
-                    <img ng-src="http://placehold.it/100x188" class="md-avatar" />
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{genre.name}}</h3>
-                    </div>
-                </md-list-item>
-            </md-list>
-        </md-content>
-    </section>
+            <div class="lock-size" layout="row" layout-align="center center">
+                <md-button aria-label="menu" class="md-fab" ng-click="genres.addNewGenre($event)">
+                    <i class="fa fa-plus"></i>
+                </md-button>
+            </div>
+        </section>
 
-    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <div class="lock-size" layout="row" layout-align="center center">
-            <md-fab-speed-dial md-open="false" md-direction="left" class="md-scale">
-                <md-fab-trigger>
-                    <md-button aria-label="menu" class="md-fab md-primary">
-                        Fix this position
-                    </md-button>
-                </md-fab-trigger>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-content flex='55'>
+                <md-list flex>
+                    <md-list-item class="md-3-line" ng-click="" ng-repeat="genre in genres.genreList" ui-sref="genre-info({page: genres.pageNumber, genreId:genre.id})">
+                        <img ng-src="http://placehold.it/100x188" class="md-avatar" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{genre.name}}</h3>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </section>
 
-                <md-fab-actions>
-                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini" ng-click="genres.addNewGenre($event)">
-                        B
-                    </md-button>
-                </md-fab-actions>
-            </md-fab-speed-dial>
-        </div>
-
-    </section>
-
-
-    <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
-        <md-button class="md-raised">Page 1</md-button>
-        <md-button class="md-raised">Page 2</md-button>
-        <md-button class="md-raised">Page 3</md-button>
-    </section>
-</md-content>
+        <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+            <md-button ng-show="genres.paginationArray.length>=1" class="md-raised" ng-repeat="page in genres.paginationArray | limitTo: 5 : genres.pageNumber  track by $index"
+                ui-sref="genres({page: page})">{{page}}</md-button>
+            <md-button ng-hide="genres.paginationArray.length>=1" class="md-raised" ui-sref="genres({page: 1})">Back to first Page</md-button>
+        </section>
+    </md-content>
+</div>

@@ -1,5 +1,5 @@
-class GenreController{
-    constructor($stateParams, GenreService, $mdDialog) {
+class GenreController {
+  constructor($stateParams, GenreService, $mdDialog) {
     'ngInject';
     this.pageNumber = $stateParams.page;
     this.genreId = $stateParams.genreId;
@@ -12,24 +12,28 @@ class GenreController{
     this.detailedInfo = this.genreList[1];
   };
 
-  getGenreList(){
+  getGenreList() {
     let vm = this;
     vm.genreService.getGenreList(vm.pageNumber).then((response) => {
       vm.genreList = response.results;
+      //this has to be be empty while going towards the last page
+      let maxPageNumb = Math.ceil(response.count / 20);
+      vm.paginationArray = vm.pageNumber == maxPageNumb ? [] : Array.from({ length: maxPageNumb }, (v, k) => k + 1);
     }, () => { })
   }
 
- getCurrentGenre() {
+  getCurrentGenre() {
     let vm = this;
     vm.genreService.getGenreData(vm.genreId).then((response) => {
       //and figure out the pagination as well
     }, () => { })
   }
+
   addNewGenre(ev) {
     let vm = this;
     vm.mdDialog.show({
       controller: ["$scope", '$mdDialog', ($scope, $mdDialog) => {
-        $scope.genre = { name: ''};
+        $scope.genre = { name: '' };
         $scope.hide = function () {
           $mdDialog.hide();
         };
@@ -62,7 +66,7 @@ class GenreController{
         //toast something here
       });
   }
-  
+
   editGenre(genre, ev) {
     let vm = this;
     vm.mdDialog.show({
