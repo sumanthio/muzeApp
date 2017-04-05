@@ -1,9 +1,11 @@
 class GenreController {
-  constructor($stateParams, GenreService, $mdDialog) {
+  constructor($state, $stateParams, GenreService, $mdDialog, $mdToast) {
     'ngInject';
+    this.state = $state;
     this.pageNumber = $stateParams.page;
     this.genreId = $stateParams.genreId;
     this.mdDialog = $mdDialog;
+    this.mdToast = $mdToast;
     this.genreService = GenreService;
     this.genreList = [
       { "id": 1, "name": "Genre One" },
@@ -59,8 +61,13 @@ class GenreController {
     })
       .then((newGenre) => {
         this.genreService.createNewGenre(newGenre).then(() => {
-          //toast something here
-          //and reload the view
+          vm.mdToast.show(
+            vm.mdToast.simple()
+              .textContent('Genre created')
+              .position('top right')
+              .hideDelay(1000)
+          );
+          vm.state.reload();
         }, () => { });
       }, function () {
         //toast something here
@@ -102,11 +109,21 @@ class GenreController {
     })
       .then((updatedGenreData) => {
         this.genreService.updateGenre(updatedGenreData).then(() => {
-          //toast something here
-          //and reload the view
+          vm.mdToast.show(
+            vm.mdToast.simple()
+              .textContent('Genre updated')
+              .position('top right')
+              .hideDelay(1000)
+          );
+          vm.state.reload();
         }, () => { });
       }, function () {
-        //toast something here
+         vm.mdToast.show(
+            vm.mdToast.simple()
+              .textContent('Something wrong')
+              .position('bottom right')
+              .hideDelay(1000)
+          );
       });
   }
 

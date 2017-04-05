@@ -31,17 +31,20 @@ let muzeApp = angular.module('muzeApp', [
 ]);
 
 muzeApp.config(['$urlRouterProvider', '$locationProvider', '$httpProvider', ($urlRouterProvider, $locationProvider, $httpProvider) => {
+  
   $locationProvider.hashPrefix('');
+
   $urlRouterProvider.otherwise("/tracks/1");
 
-  $httpProvider.interceptors.push(function ($q, $injector,) {
+  $httpProvider.interceptors.push(function ($q) {
+    //var $mdToast = $injector.get('$mdToast');
     return {
       'request': function (config) {
         return config;
       },
 
       'requestError': function (rejection) {
-                return $q.reject(rejection);
+        return $q.reject(rejection);
       },
 
       'response': function (response) {
@@ -49,9 +52,14 @@ muzeApp.config(['$urlRouterProvider', '$locationProvider', '$httpProvider', ($ur
       },
 
       'responseError': function (rejection) {
-        if(rejection.status > 400) {
-                    toaster.pop('error', "Error", "Something went wrong");
-                }
+        if (rejection.status > 400) {
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('Simple Toast!')
+              .position(pinTo)
+              .hideDelay(3000)
+          );
+        }
         return $q.reject(rejection);
       }
     };

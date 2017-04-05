@@ -1,5 +1,5 @@
 <div layout='row' layout-align="center center">
-    <md-content class="md-whiteframe-24dp" flex='85' flex-xs='100' ng-init="tracks.getTrackList()">
+    <md-content class="md-whiteframe-24dp" flex='75' flex-xs='100' ng-init="tracks.getTrackList()">
 
         <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
         <md-autocomplete flex md-selected-item="tracks.key" md-search-text="tracks.searchText" md-items="track in tracks.searchTrack(tracks.searchText)"
@@ -22,7 +22,8 @@
         </section>
 
         <section layout="column" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-content flex='75'>
+            <md-content flex="55" flex-xs='75' ng-show="tracks.tracksList.length> 0">
+                <tracks-list data-tracks='tracks.tracksList'> </tracks-list>
                 <md-list>
                     <md-subheader class="md-no-sticky">Tracks list</md-subheader>
                     <md-list-item class="md-3-line" ng-repeat="track in tracks.tracksList" ui-sref="track-info({page: tracks.pageNumber,trackId:track.id})">
@@ -34,7 +35,13 @@
                         </div>
                     </md-list-item>
                 </md-list>
+            </md-content> 
+            <md-content flex="55" flex-xs='75' ng-show="tracks.tracksList.length == 0">
+                <md-list>
+                    <md-subheader class="md-no-sticky">No Tracks</md-subheader>
+                </md-list>
             </md-content>
+
         </section>
 
 

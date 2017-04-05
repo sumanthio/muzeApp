@@ -1,40 +1,14 @@
 class TrackController {
-  constructor($state, $stateParams, $mdDialog, TrackService) {
+  constructor($state, $stateParams, $mdDialog, TrackService, $mdToast) {
     'ngInject';
     this.state = $state;
     this.pageNumber = $stateParams.page;
     this.trackId = $stateParams.trackId;
     this.mdDialog = $mdDialog;
+    this.mdToast = $mdToast;
     this.trackService = TrackService;
-    this.tracksList = [
-      {
-        "id": 38,
-        "title": "Hey Jude",
-        "rating": "4.9",
-        "genres": [
-          {
-            "id": 5,
-            "name": "ramesh"
-          }
-        ]
-      },
-      {
-        "id": 39,
-        "title": "hello adele",
-        "rating": "4.0",
-        "genres": [
-          {
-            "id": 4,
-            "name": "bollywood"
-          },
-          {
-            "id": 8,
-            "name": "metakai"
-          }
-        ]
-      },
-    ];
-    this.detailedInfo = this.tracksList[1]
+    this.tracksList = [];
+    this.detailedInfo = {};
   };
 
   getTrackList() {
@@ -60,8 +34,10 @@ class TrackController {
       vm.getTrackList()
     }
     else {
-      return vm.trackService.searchTrackData(key).then(function(response){
-        return response.results;
+      vm.trackService.searchTrackData(key).then(function (response) {
+        vm.tracksList = response.results;
+        let maxPageNumb = Math.ceil(response.count / 20);
+        vm.paginationArray = vm.pageNumber == maxPageNumb ? [] : Array.from({ length: maxPageNumb }, (v, k) => k + 1);
       })
     }
   }
@@ -72,7 +48,7 @@ class TrackController {
     vm.mdDialog.show({
       controller: ["$scope", '$mdDialog', ($scope, $mdDialog) => {
         $scope.track = { title: '', rating: '', genres: [] };
-        
+
         $scope.newGenre = function (genre) {
           return {
             name: genre
@@ -105,7 +81,12 @@ class TrackController {
         //passing random as we can't have all the genres at a single go
         newTrack.genres = [Math.floor(Math.random() * 800), Math.floor(Math.random() * 500)];
         this.trackService.createNewTrack(newTrack).then(() => {
-          //toast something here
+          vm.mdToast.show(
+            vm.mdToast.simple()
+              .textContent('Track added')
+              .position('top right')
+              .hideDelay(1000)
+          );
           vm.state.reload();
         }, () => { });
       }, function () {
@@ -118,7 +99,7 @@ class TrackController {
     vm.mdDialog.show({
       controller: ["$scope", "track", '$mdDialog', ($scope, track, $mdDialog) => {
         $scope.track = track;
-  
+
 
         $scope.newGenre = function (genre) {
           return {
@@ -157,7 +138,12 @@ class TrackController {
       .then((updatedTrackData) => {
         updatedTrackData.genres = [Math.floor(Math.random() * 800), Math.floor(Math.random() * 500)];
         this.trackService.updateTrack(updatedTrackData).then(() => {
-          //toast something here
+          vm.mdToast.show(
+            vm.mdToast.simple()
+              .textContent('Track updated')
+              .position('top right')
+              .hideDelay(1000)
+          );
           vm.state.reload();
         }, () => { });
       }, function () {

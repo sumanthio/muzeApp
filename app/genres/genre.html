@@ -1,19 +1,17 @@
-<md-content class="md-padding" layout-xs="column" layout="column" layout-align="center center" ng-init="genre.getCurrentGenre()">
-    <div flex-xs="100" flex-gt-xs="85">
+<md-content class="md-padding" layout-xs="column" layout="column" layout-align="center center">
+    <md-button class="md-primary" ui-sref="genres({page: genre.pageNumber})"><i class="fa fa-angle-left"> List</i></md-button>
+    <div flex-xs="100" flex-gt-xs="85" ng-init="genre.getCurrentGenre()">
         <md-card>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{genre.detailedInfo.name}}</span>
-                    <span class="md-subhead">
-                    </span>
                 </md-card-title-text>
                 <md-card-title-media>
                     <img ng-src="http://placehold.it/150x200" class="md-avatar" />
                 </md-card-title-media>
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button ng-click="genre.editGenre(genre.detailedInfo, $event)">Edit</md-button>  
-                <md-button>Play</md-button>
+                <md-button class="md-raised  md-primary" ng-click="genre.editGenre(genre.detailedInfo, $event)"><i class="fa fa-edit"></i> Edit</md-button>
             </md-card-actions>
         </md-card>
     </div>
