@@ -82,6 +82,7 @@ class GenreController {
 
         scope.cancel = function () {
           $mdDialog.cancel();
+          vm.state.reload();
         };
 
         scope.update = function (genre) {
