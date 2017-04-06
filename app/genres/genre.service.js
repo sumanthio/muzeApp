@@ -2,8 +2,8 @@ class GenreService {
 
     constructor($resource) {
         'ngInject';
-        this.genreListResource = $resource('http://104.197.128.152:8000/v1/genres');
-        this.genreResource = $resource('http://104.197.128.152:8000/v1/genres/:genreId');
+        this.genreListResource = $resource('//104.197.128.152:8000/v1/genres');
+        this.genreResource = $resource('//104.197.128.152:8000/v1/genres/:genreId');
         //observe the webpack's endpoint config
     }
 
