@@ -1,3 +1,7 @@
+import sidebar from '../sidebar.html';
+import GenreList from  './genre-list.html';
+import Genre from  './genre.html';
+
 class GenreConfig {
     static initRoute($stateProvider) {
         'ngInject';
@@ -5,16 +9,16 @@ class GenreConfig {
         $stateProvider
         .state('genres', {
                 abstract: true,
-                templateUrl: require('../sidebar.html'),
+                templateUrl: sidebar,
             })
             .state('genres.list', {
                 url: '/genres/:page',
-                templateUrl: require('./genre-list.html'),
+                templateUrl: GenreList,
                 controller: 'GenreController as genres'
             })
             .state('genres.detail', {
                 url: '/genres/:page/:genreId',
-                templateUrl : require('./genre.html'),
+                templateUrl : Genre,
                 controller: 'GenreController as genre'
             })
     }

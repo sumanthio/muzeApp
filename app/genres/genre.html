@@ -1,6 +1,6 @@
-<md-content class="md-padding" layout-xs="column" layout="column" layout-align="center center">
+<md-content class="md-padding" layout-xs="column" layout="column" layout-align="center center" ng-init="genre.getCurrentGenre()">
     <md-button class="md-primary" ui-sref="genres.list({page: genre.pageNumber})"><i class="fa fa-angle-left"> List</i></md-button>
-    <div flex-xs="100" flex-gt-xs="85" ng-init="genre.getCurrentGenre()">
+    <!--<div flex-xs="100" flex-gt-xs="100" ng-init="genre.getCurrentGenre()">
         <md-card>
             <md-card-title>
                 <md-card-title-text>
@@ -17,6 +17,23 @@
                 <md-button class="md-raised  md-primary" ng-click="genre.editGenre(genre.detailedInfo, $event)"><i class="fa fa-edit"></i> Edit</md-button>
             </md-card-actions>
         </md-card>
+    </div>-->
+ <md-card flex="75">
+        <md-card-title>
+          <md-card-title-text layout-align="center center">
+            <span class="md-headline">{{genre.detailedInfo.name}}</span>
+            <span class="md-subhead">{{genre.detailedInfo.id}}</span>
+          </md-card-title-text>
+        </md-card-title>
+         <md-card-title-media>
+                    <img ng-src="http://placehold.it/200x200" class="md-avatar" />
+                </md-card-title-media>
+        <md-card-actions layout="row" layout-align="center center">
+                <md-button class="md-raised  md-primary" ng-click="genre.editGenre(genre.detailedInfo, $event)"><i class="fa fa-edit"></i> Edit</md-button>
+            </md-card-actions>
+      </md-card>
+    <div flex-xs flex-gt-xs="75" layout="row" layout-align="center center">
+     
     </div>
 
 </md-content>

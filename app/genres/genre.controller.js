@@ -92,7 +92,6 @@ class GenreController {
       templateUrl: 'app/genres/edit-genre-dialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
-      scope: 'isolate',
       clickOutsideToClose: true,
       resolve: {
         genreObject: () => {

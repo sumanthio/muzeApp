@@ -18,7 +18,7 @@ const config = {
       {
         test: /\.html$/,
         use: [
-         'file-loader?name=templates/[name]-[hash:6].html-loader'
+         'ngtemplate-loader','html-loader'
         ],
       },
       {
