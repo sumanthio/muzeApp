@@ -1,0 +1,28 @@
+
+
+
+<!DOCTYPE html>
+<html ng-strict-di ng-app="muzeApp">
+<head>
+    <title>Muze</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+</head>
+
+<body ng-cloak layout="column">
+        <div class="slide" ui-view></div>
+
+    <script>
+        window.paceOptions = {
+            document: true,
+            eventLag: true,
+            restartOnPushState: true,
+            restartOnRequestAfter: true,
+            ajax: {
+                trackMethods: ['POST', 'GET']
+            }
+        }
+    </script>
+<script type="text/javascript" src="bundle-f3b720.js"></script></body>
+
+</html>
