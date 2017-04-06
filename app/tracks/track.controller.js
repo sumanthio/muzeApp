@@ -122,6 +122,7 @@ class TrackController {
       templateUrl: 'app/tracks/edit-track-dialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
+      scope: 'isolate',
       clickOutsideToClose: true,
       resolve: {
         track: () => {

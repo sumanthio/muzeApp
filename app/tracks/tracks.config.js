@@ -5,7 +5,7 @@ class TracksConfig {
         $stateProvider
             .state('index', {
                 abstract: true,
-                templateUrl: 'app/tracks/sidebar.html',
+                templateUrl: 'app/sidebar.html',
             })
             .state('index.tracks', {
                 url: '/tracks/:page',

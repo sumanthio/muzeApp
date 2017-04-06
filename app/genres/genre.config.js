@@ -3,12 +3,16 @@ class GenreConfig {
         'ngInject';
 
         $stateProvider
-            .state('genres', {
+        .state('genres', {
+                abstract: true,
+                templateUrl: 'app/sidebar.html',
+            })
+            .state('genres.list', {
                 url: '/genres/:page',
                 templateUrl: 'app/genres/genre-list.html',
                 controller: 'GenreController as genres'
             })
-            .state('genre-info', {
+            .state('genres.detail', {
                 url: '/genres/:page/:genreId',
                 templateUrl: 'app/genres/genre.html',
                 controller: 'GenreController as genre'

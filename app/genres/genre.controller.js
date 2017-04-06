@@ -7,11 +7,8 @@ class GenreController {
     this.mdDialog = $mdDialog;
     this.mdToast = $mdToast;
     this.genreService = GenreService;
-    this.genreList = [
-      { "id": 1, "name": "Genre One" },
-      { "id": 3, "name": "Genre Teo" }
-    ];
-    this.detailedInfo = this.genreList[1];
+    this.genreList = [];
+    this.detailedInfo = {};
   };
 
   getGenreList() {
@@ -27,7 +24,7 @@ class GenreController {
   getCurrentGenre() {
     let vm = this;
     vm.genreService.getGenreData(vm.genreId).then((response) => {
-      //and figure out the pagination as well
+      vm.detailedInfo = response;
     }, () => { })
   }
 
@@ -77,26 +74,27 @@ class GenreController {
   editGenre(genre, ev) {
     let vm = this;
     vm.mdDialog.show({
-      controller: ["$scope", "genre", '$mdDialog', ($scope, genre, $mdDialog) => {
-        $scope.genre = genre;
-        $scope.hide = function () {
+      controller: ["scope", "genreObject", '$mdDialog', (scope, genreObject, $mdDialog) => {
+        scope.genre = genreObject;
+        scope.hide = function () {
           $mdDialog.hide();
         };
 
-        $scope.cancel = function () {
+        scope.cancel = function () {
           $mdDialog.cancel();
         };
 
-        $scope.update = function (genre) {
+        scope.update = function (genre) {
           $mdDialog.hide(genre);
         };
       }],
       templateUrl: 'app/genres/edit-genre-dialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
+      scope: 'isolate',
       clickOutsideToClose: true,
       resolve: {
-        genre: () => {
+        genreObject: () => {
           return genre;
         }
       },
