@@ -1,18 +1,19 @@
-class BooksConfig {
+class TracksConfig {
     static initRoute($stateProvider) {
         'ngInject';
-
         //Get the ROUTES from UI ROUTER PROPERLY....!!
         $stateProvider
-            .state('tracks', {
+            .state('index', {
+                abstract: true,
+                templateUrl: 'app/tracks/sidebar.html',
+            })
+            .state('index.tracks', {
                 url: '/tracks/:page',
-                name: 'Tracks List',
                 templateUrl: 'app/tracks/tracks-list.html',
                 controller: 'TrackController as tracks'
             })
-            .state('track-info', {
+            .state('index.trackInfo', {
                 url: '/tracks/:page/:trackId',
-                name: 'Track Detail',
                 templateUrl: 'app/tracks/track.html',
                 controller: 'TrackController as track'
             })
@@ -21,4 +22,4 @@ class BooksConfig {
 
 }
 
-export default BooksConfig.initRoute;
+export default TracksConfig.initRoute;

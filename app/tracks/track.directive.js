@@ -1,9 +1,9 @@
 class TrackDirective {
     constructor($state) {
-        this.template = `<md-list-item class="md-3-line" ui-sref="track-info({page: {{page}},trackId:track.id})">
+        this.template = `<md-list-item class="md-3-line" ui-sref="index.trackInfo({page: {{page}},trackId:track.id})">
                         <i class="fa fa-headphones fa-2x" layout-padding aria-hidden="true"></i>
                         <div class="md-list-item-text" layout="column">
-                            <h3>{{track.title}}</h3>
+                            <h3 class="md-headline">{{track.title}}</h3>
                             <md-chips ng-model="track.genres" readonly="true">
                                 <md-chip-template>
                                     {{$chip.name}}

@@ -8,8 +8,6 @@ import 'angular-material/angular-material.css';
 
 import angularUIRouter from 'angular-ui-router';
 
-import toaster from 'angularjs-toaster';
-
 import TracksModule from './tracks/tracks.module';
 import GenresModule from './genres/genre.module';
 
@@ -25,7 +23,6 @@ let muzeApp = angular.module('muzeApp', [
   'ngAnimate',
   'ngMaterial',
   'ngResource',
-  toaster,
   TracksModule,
   GenresModule
 ]);

@@ -1,13 +1,6 @@
 <div layout='row' layout-align="center center">
     <md-content class="md-whiteframe-24dp" flex='75' flex-xs='100' ng-init="tracks.getTrackList()">
 
-        <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-autocomplete flex md-selected-item="tracks.key" md-search-text="tracks.searchText" md-items="track in tracks.searchTrack(tracks.searchText)"
-            md-item-text="track" md-floating-label="Search Tracks" ng-model-options="{debounce: 500}">
-            <span md-highlight-text="tracks.searchText">{{track}}</span>
-        </md-autocomplete>
-    </section>-->
-
         <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
             <md-input-container class="md-block" flex='55'>
                 <label>Search Track</label>
@@ -40,7 +33,7 @@
 
         <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
             <md-button ng-show="tracks.paginationArray.length>=1" class="md-raised" ng-repeat="page in tracks.paginationArray | limitTo: 5 : tracks.pageNumber  track by $index"
-                ui-sref="tracks({page: page})">{{page}}</md-button>
+                ui-sref="index.tracks({page: page})">{{page}}</md-button>
             <md-button ng-hide="tracks.paginationArray.length>=1" class="md-raised" ui-sref="tracks({page: 1})">Back to first Page</md-button>
         </section>
     </md-content>
