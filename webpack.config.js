@@ -17,12 +17,9 @@ const config = {
     rules: [
       {
         test: /\.html$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: 'templates'
-          }
-        }]
+        use: [
+         'file-loader?name=templates/[name]-[hash:6].html-loader'
+        ],
       },
       {
         test: /\.css$/,
@@ -75,18 +72,7 @@ const config = {
     })
   ],
   devServer: {
-    proxy: {
-      '/api/*': {
-        target: 'http://acpvm9.cloudapp.net:8080/',
-        //target: 'http://23.101.133.43:8080/',
-      },
-      '/cato/*': {
-        target: 'http://23.101.133.43:8080/',
-        rewrite: function (req) {
-          req.url = req.url.replace('cato', 'api');
-        }
-      }
-    }
+    //not needed here
   }
 };
 

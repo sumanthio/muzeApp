@@ -5,16 +5,17 @@ class TracksConfig {
         $stateProvider
             .state('index', {
                 abstract: true,
-                templateUrl: 'app/sidebar.html',
+                templateUrl: require('../sidebar.html'),
+                controller: 'SideBarCtrl as bar'
             })
             .state('index.tracks', {
                 url: '/tracks/:page',
-                templateUrl: 'app/tracks/tracks-list.html',
+                templateUrl: require('./tracks-list.html'),
                 controller: 'TrackController as tracks'
             })
             .state('index.trackInfo', {
                 url: '/tracks/:page/:trackId',
-                templateUrl: 'app/tracks/track.html',
+                templateUrl: require('./track.html'),
                 controller: 'TrackController as track'
             })
 
