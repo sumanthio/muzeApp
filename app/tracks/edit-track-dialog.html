@@ -15,18 +15,18 @@
         <div>
           <md-input-container>
             <label>ID</label>
-            <input ng-model="track.id" ng-disabled="">
+            <input ng-model="trackData.id" ng-disabled="">
           </md-input-container>
 
 
           <md-input-container>
             <label>Title</label>
-            <input ng-model="track.title">
+            <input ng-model="trackData.title">
           </md-input-container>
 
           <md-input-container>
             <label>Genres</label>
-              <md-chips ng-model="track.genres" md-removable="true" md-transform-chip="newGenre($chip)" placeholder="Enter a genre">
+              <md-chips ng-model="trackData.genres" md-removable="true" md-transform-chip="newGenre($chip)" placeholder="Enter a genre">
               <md-chip-template>
                 <strong>{{$chip.name}}</strong>
               </md-chip-template>
@@ -35,7 +35,7 @@
 
           <md-input-container>
             <label>Rating</label>
-            <input ng-model="track.rating">
+            <input ng-model="trackData.rating">
           </md-input-container>
         </div>
       </md-content>

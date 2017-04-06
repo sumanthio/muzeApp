@@ -94,12 +94,15 @@ class TrackController {
       });
   }
 
-  editTrack(track, ev) {
+  editTrack(ev, track) {
     let vm = this;
     vm.mdDialog.show({
-      controller: ["$scope", "track", '$mdDialog', ($scope, track, $mdDialog) => {
-        $scope.track = track;
-
+      locals: {
+        trackData: track
+      },
+      controller: ["$scope", "trackData", '$mdDialog', ($scope, trackData, $mdDialog) => {
+        $scope.trackData = trackData;
+        console.log(trackData, "in modal;s")
 
         $scope.newGenre = function (genre) {
           return {
@@ -113,6 +116,7 @@ class TrackController {
 
         $scope.cancel = function () {
           $mdDialog.cancel();
+          vm.state.reload();
         };
 
         $scope.update = function (track) {
@@ -121,14 +125,9 @@ class TrackController {
       }],
       templateUrl: 'app/tracks/edit-track-dialog.html',
       parent: angular.element(document.body),
+      preserveScope: true,
       targetEvent: ev,
-      scope: 'isolate',
       clickOutsideToClose: true,
-      resolve: {
-        track: () => {
-          return track;
-        }
-      },
       openFrom: {
         top: -50
       },

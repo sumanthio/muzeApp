@@ -11,7 +11,7 @@
         </section>
 
         <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-content flex='55'>
+            <md-content flex='55' flex-xs='75' ng-show="genres.genreList.length > 0">
                 <md-list flex>
                     <md-list-item class="md-3-line" ng-click="" ng-repeat="genre in genres.genreList" ui-sref="genres.detail({page: genres.pageNumber, genreId:genre.id})">
                         <img ng-src="http://placehold.it/100x188" class="md-avatar" />
@@ -21,6 +21,13 @@
                     </md-list-item>
                 </md-list>
             </md-content>
+
+            <md-content flex="55" flex-xs='75' ng-show="genres.genreList.length == 0">
+                <md-list>
+                    <md-subheader class="md-no-sticky">No Tracks</md-subheader>
+                </md-list>
+            </md-content>
+
         </section>
 
         <section layout="row" layout-sm="row" layout-align="center center" layout-wrap>
